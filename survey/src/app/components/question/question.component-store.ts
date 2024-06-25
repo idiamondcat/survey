@@ -76,6 +76,7 @@ export class SurveyStore extends ComponentStore<SurveyComponentState> {
                 this.patchState({ isLoading: false });
                 setTimeout(() => {
                     // this.patchState({ isLoading: false });
+                    console.log(newAnsweredQuestions);
                     this.router.navigate(['/results']);
                 }, 1000)
                 // this.surveyService.postData(state.answeredQuestions).subscribe(res => {

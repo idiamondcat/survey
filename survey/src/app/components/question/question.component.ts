@@ -50,10 +50,7 @@ export class QuestionComponent implements OnInit {
       const currQuestion: {[key: string]: any} = this.form.value;
       this.surveyStore.prevQuestion(currQuestion);
       this.progress = Math.max(0, this.progress - 1);
-    } else {
-      console.log('STOP!!!');
     }
-    console.log(this.progress);
   }
 
   public nextQuestion(): void {
@@ -61,8 +58,6 @@ export class QuestionComponent implements OnInit {
       const currQuestion: {[key: string]: any} = this.form.value;
       this.surveyStore.nextQuestion(currQuestion);
       this.progress = Math.min(this.questionCount, this.progress + 1);
-    } else {
-      console.log('FINALLY!!!!');
     }
   }
 
