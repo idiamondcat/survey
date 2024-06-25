@@ -1,0 +1,148 @@
+{
+    "user": {
+        "name": "Константин",
+        "email": "",
+        "phone": ""
+    },
+    "price": {
+        "total": 3000,
+        "discount": true,
+        "discounted_price": 2700,
+        "discountCodes": [
+            {
+                "name": "FIRST",
+                "type": "percent",
+                "discount_value": 30
+            },
+            {
+                "name": "LADY",
+                "type": "sum",
+                "discount_value": 150
+            }
+        ]
+    },
+    "results": [
+        {
+            "name": "Состояние кожи",
+            "positive": false
+        },
+        {
+            "name": "Состояние волос",
+            "positive": false
+        },
+        {
+            "name": "Курение",
+            "positive": false
+        },
+        {
+            "name": "Физ. активность",
+            "positive": false
+        },
+        {
+            "name": "Состояние ногтей",
+            "positive": true
+        }
+    ],
+    "supplements": [
+        {
+            "name": "В12",
+            "description": "Поддерживает работу нервной системы, помогает в производстве энергии, предотвращает анемию.",
+            "count": "500 мкг",
+            "img": "",
+            "ingredients": [
+                {
+                    "name": "sfd0",
+                    "count": "dsfdgd"
+                },
+                {
+                    "name": "sfd0",
+                    "count": "dsfdgd"
+                },
+                {
+                    "name": "sfd0",
+                    "count": "dsfdgd"
+                }
+            ]
+        },
+        {
+            "name": "Омега 3",
+            "description": "Поддерживают здоровье сердца, снижают воспаление, улучшают функцию мозга и могут помочь при депрессии.",
+            "count": "1000 мг",
+            "img": "",
+            "ingredients": [
+                {
+                    "name": "sfd0",
+                    "count": "dsfdgd"
+                },
+                {
+                    "name": "sfd0",
+                    "count": "dsfdgd"
+                },
+                {
+                    "name": "sfd0",
+                    "count": "dsfdgd"
+                }
+            ]
+        },
+        {
+            "name": "Магний",
+            "description": "Поддерживает нервную и мышечную функции, участвует в синтезе белков, регуляции сахара в крови и артериального давления.",
+            "count": "200 мг",
+            "img": "",
+            "ingredients": [
+                {
+                    "name": "sfd0",
+                    "count": "dsfdgd"
+                },
+                {
+                    "name": "sfd0",
+                    "count": "dsfdgd"
+                },
+                {
+                    "name": "sfd0",
+                    "count": "dsfdgd"
+                }
+            ]
+        },
+        {
+            "name": "Калий",
+            "description": "Регулирует водный баланс, поддерживает нормальную работу нервной и мышечной систем, помогает поддерживать кровяное давление.",
+            "count": "99 мг",
+            "img": "",
+            "ingredients": [
+                {
+                    "name": "sfd0",
+                    "count": "dsfdgd"
+                },
+                {
+                    "name": "sfd0",
+                    "count": "dsfdgd"
+                },
+                {
+                    "name": "sfd0",
+                    "count": "dsfdgd"
+                }
+            ]
+        },
+        {
+            "name": "Железо",
+            "description": "Способствует транспортировке кислорода в крови, поддерживает иммунную функцию, предотвращает анемию.",
+            "count": "20 мг",
+            "img": "",
+            "ingredients": [
+                {
+                    "name": "sfd0",
+                    "count": "dsfdgd"
+                },
+                {
+                    "name": "sfd0",
+                    "count": "dsfdgd"
+                },
+                {
+                    "name": "sfd0",
+                    "count": "dsfdgd"
+                }
+            ]
+        }
+    ]
+}
