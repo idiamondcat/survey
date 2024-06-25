@@ -1,0 +1,6 @@
+<div class="indicator">
+    <p class="indicator__step">{{progress}} из {{questionCount}}</p>
+    <div class="indicator__elem">
+        <div class="indicator__indicator" [style.width.%]="(progress / questionCount) * 100"></div>
+    </div>
+</div>

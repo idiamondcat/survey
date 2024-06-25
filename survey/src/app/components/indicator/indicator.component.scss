@@ -1,0 +1,23 @@
+:root {
+    width: 100%;
+}
+.indicator {
+    &__elem {
+        height: 15px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+        border-radius: 8px;
+        border: 2px solid #F1F3F9;
+    }
+
+    &__indicator {
+        height: 100%;
+        background-color: #DAFB59;
+        border-radius: 4px;
+    }
+
+    &__step {
+        margin: 0;
+    }
+}

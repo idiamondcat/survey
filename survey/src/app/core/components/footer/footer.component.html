@@ -1,0 +1,13 @@
+<footer class="footer">
+    <div class="container footer__container">
+        <ul class="footer__links-list">
+            @for (item of social; track item) {
+                <li class="footer__links-item">
+                    <a [ngClass]="item.class" class="footer__link" [href]="item.link" [title]="item.name">
+                        <fa-icon class="footer__icon" [icon]="item.icon"></fa-icon>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</footer>

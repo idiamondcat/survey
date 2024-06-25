@@ -1,0 +1,249 @@
+@if (results) {
+    <header class="header">
+        <div class="container header__container">
+            <div class="header__price-wrapper">
+                @if (results.price.discount) {
+                    <span class="header__discount-price">{{results.price.total | currency: 'RUB':'symbol':'1.0-0'}}</span>
+                    <span class="header__price">{{results.price.discounted_price | currency: 'RUB':'symbol':'1.0-0'}}</span>
+                } @else {
+                    <span class="header__price">{{results.price.total | currency: 'RUB':'symbol':'1.0-0'}}</span>
+                }
+            </div>
+            <button class="btn btn--green">Заказать</button>
+        </div>
+    </header>
+    <section class="banner">
+        <div class="container banner__container">
+            <div class="banner__description">
+                <h2 class="title banner__title">
+                    <span class="banner__name">{{results.user.name}}</span>, Ваш персональный курс готов!
+                </h2>
+                <div class="banner__widget-list">
+                    <div class="banner__widget">
+                        <fa-icon class="banner__icon" [icon]="faTruckFast"></fa-icon>
+                        <span class="banner__text">Бесплатная доставка в течение 3 дней</span>
+                    </div>
+                    <div class="banner__widget">
+                        <div class="banner__wrapper">
+                            <fa-icon class="banner__icon" [icon]="faStar"></fa-icon>
+                            <span class="banner__rate">4.9</span>
+                        </div>
+                        <span class="banner__text">Отзывы покупателей</span>
+                    </div>
+                </div>
+            </div>
+            @if (!isSmall) {
+                <div class="banner__img-wrapper">
+                    <img src="" alt="">
+                </div>
+            }
+        </div>
+    </section>
+    <section class="results">
+        <div class="container">
+            <h2 class="title results__title">Ваши результаты</h2>
+            <div class="results__list">
+                @for (item of results.results; track item) {
+                    <div class="results__item" [ngClass]="[!item.positive ? 'results__item--negative' : 'results__item--positive']">
+                        @if (item.positive) {
+                            <fa-icon class="results__icon" [icon]="faRotateRight"></fa-icon>
+                        } @else {
+                            <fa-icon class="results__icon" [icon]="faRotateLeft"></fa-icon>
+                        }
+                        <span class="results__text">{{item.name}}</span>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    <section class="recommendations">
+        <div class="container">
+            <div class="recommendations__wrapper">
+                <h2 class="title">Ваши рекомендации</h2>
+                <span class="recommendations__compability">
+                    <fa-icon class="recommendations__icon" [icon]="faCircleCheck"></fa-icon>
+                    100% совместимость
+                </span>
+                <div class="recommendations__slider">
+                    <div class="recommendations__slider-container" #moveSlider>
+                        @for (item of results.supplements; track item) {
+                            <!-- тут можно вынести в отдельный компонент -->
+                            <div class="recommendations__slider-item">
+                                <div class="recommendations__img-wrapper">
+                                    <img class="recommendations__img" src="" alt="">
+                                </div>
+                                <h3 class="recommendations__item-name">{{item.name}}</h3>
+                                <span>{{item.count}} x 30 капсул</span>
+                                <p class="recommendations__item-description">{{item.description}}</p>
+                                <button class="recommendations__item-btn">подробнее</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="recommendations__btns-wrapper">
+                    <div class="recommendations__controls-wrapper">
+                        <button class="recommendations__btn recommendations__btn--left" (click)="moveLeft()">
+                            <fa-icon class="recommendations__btn-icon" [icon]="faAngleLeft"></fa-icon>
+                        </button>
+                        <button class="recommendations__btn recommendations__btn--right" (click)="moveRight()">
+                            <fa-icon class="recommendations__btn-icon" [icon]="faAngleRight"></fa-icon>
+                        </button>
+                    </div>
+                    <button class="btn btn--violet">Изменить набор</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="plans">
+        <div class="container">
+            <h2 class="title plans__title">Наши программы</h2>
+            <p class="plans__text">Tation argumentum et usu, dicit viderer evertitur te has. Eu dictas concludaturque usu, facete detracto patrioque an per lucilius.</p>
+            <div class="plans__list">
+                <!-- тут можно план отдельным компонентом -->
+                <div class="plans__item">
+                    <h3 class="plans__name">Старт</h3>
+                    <p class="plans__description">Tation argumentum et usu, dicit viderer evertitur te has.</p>
+                    <ul class="plans__features-list">
+                        <li class="plans__features-item">
+                            <fa-icon class="plans__icon" [icon]="faCircleCheck"></fa-icon>
+                            <span>First feature</span>
+                        </li>
+                        <li class="plans__features-item">
+                            <fa-icon class="plans__icon" [icon]="faCircleCheck"></fa-icon>
+                            <span>First feature</span>
+                        </li>
+                        <li class="plans__features-item">
+                            <fa-icon class="plans__icon" [icon]="faCircleCheck"></fa-icon>
+                            <span>First feature</span>
+                        </li>
+                    </ul>
+                    <button class="btn btn--green plans__btn">Купить за {{150 | currency: "RUB" : "symbol" : "1.0-0"}}</button>
+                </div>
+                <div class="plans__item">
+                    <h3 class="plans__name">Медиум</h3>
+                    <p class="plans__description">Tation argumentum et usu, dicit viderer evertitur te has.</p>
+                    <ul class="plans__features-list">
+                        <li class="plans__features-item">
+                            <fa-icon class="plans__icon" [icon]="faCircleCheck"></fa-icon>
+                            <span>First feature</span>
+                        </li>
+                        <li class="plans__features-item">
+                            <fa-icon class="plans__icon" [icon]="faCircleCheck"></fa-icon>
+                            <span>First feature</span>
+                        </li>
+                        <li class="plans__features-item">
+                            <fa-icon class="plans__icon" [icon]="faCircleCheck"></fa-icon>
+                            <span>First feature</span>
+                        </li>
+                    </ul>
+                    <button class="btn btn--green plans__btn">Купить за {{150 | currency: 'RUB':'symbol':'1.0-0'}}</button>
+                </div>
+                <div class="plans__item">
+                    <h3 class="plans__name">Полный</h3>
+                    <p class="plans__description">Tation argumentum et usu, dicit viderer evertitur te has.</p>
+                    <ul class="plans__features-list">
+                        <li class="plans__features-item">
+                            <fa-icon class="plans__icon" [icon]="faCircleCheck"></fa-icon>
+                            <span>First feature</span>
+                        </li>
+                        <li class="plans__features-item">
+                            <fa-icon class="plans__icon" [icon]="faCircleCheck"></fa-icon>
+                            <span>First feature</span>
+                        </li>
+                        <li class="plans__features-item">
+                            <fa-icon class="plans__icon" [icon]="faCircleCheck"></fa-icon>
+                            <span>First feature</span>
+                        </li>
+                    </ul>
+                    <button class="btn btn--green plans__btn">Купить за {{150 | currency: 'RUB':'symbol':'1.0-0'}}</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="order">
+        <div class="container">
+            <div class="order__description">
+                <h2 class="title order__title">Закажите сейчас!</h2>
+                <div class="order__discount">
+                    <form class="order__form" [formGroup]="orderForm">
+                        <div class="order__form-wrapper">
+                            <label class="order__label" for="discount"><span class="order__label-text">Код скидки</span>
+                                <input class="field" type="text" id="discount" formControlName="discountCode">
+                                @if(discountCode?.value) {
+                                    <button class="order__cancel-btn" (click)="clearField(discountCode)">
+                                        <fa-icon class="order__icon" [icon]="faXmark"></fa-icon>
+                                    </button>
+                                }
+                            </label>
+                            <button class="order__certificate" (click)="isShowCertificate = !isShowCertificate">У меня есть сертификат</button>
+                        </div>
+                        @if (isShowCertificate) {
+                            <label class="order__label" for="certificate"><span class="order__label-text">Сертификат</span>
+                                <input class="field" type="text" id="certificate" placeholder="Введите промокод" formControlName="certificate">
+                                @if(certificate?.value) {
+                                    <button class="order__cancel-btn" (click)="clearField(certificate)">
+                                        <fa-icon class="order__icon" [icon]="faXmark"></fa-icon>
+                                    </button>
+                                }
+                            </label>
+                        }
+                    </form>
+                    @if (results.price.discount) {
+                        <div class="order__discount-info">
+                            <div class="order__discount-row">
+                                <span>Заказ:</span>
+                                <span>{{results.price.total | currency: 'RUB':'symbol':'1.0-0'}}</span>
+                            </div>
+                            @if (results.price.discountCodes) {
+                                @for (item of results.price.discountCodes; track item) {
+                                    <div class="order__discount-row">
+                                        <span>{{item.name}}</span>
+                                        @if (item.type === 'percent') {
+                                            <span>- {{ item.discount_value / 100 | percent: '1.0-0' }}</span>
+                                        } @else {
+                                            <span>- {{ item.discount_value | currency: 'RUB':'symbol':'1.0-0' }}</span>
+                                        }
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }
+                </div>
+                <div class="order__total">
+                    <span class="order__total-text">Итого:</span>
+                    <span class="order__total-price">{{(results.price.discount ? results.price.discounted_price : results.price.total) | currency: 'RUB':'symbol':'1.0-0'}}</span>
+                </div>
+            </div>
+            <!-- <div class="order__img-wrapper">
+                <img src="" alt="">
+            </div> -->
+        </div>
+    </section>
+    <section class="experience">
+        <div class="container">
+            <h2 class="title experience__title">Поделитесь Вашими впечатлениями</h2>
+            <p class="experience__text">Tation argumentum et usu, dicit viderer evertitur te has. Eu dictas concludaturque usu, facete detracto patrioque an per lucilius.</p>
+            <form class="experience__form" [formGroup]="experienceForm" (ngSubmit)="submitExperience()">
+                <textarea class="field" name="" id="" rows="4" placeholder="Введите сообщение..." formControlName="experience"></textarea>
+                <button type="submit" class="btn btn--violet experience__btn">Отправить</button>
+            </form>
+        </div>
+    </section>
+    <section class="qa">
+        <div class="container">
+            <h2 class="title qa__title">Часто задаваемые вопросы</h2>
+            <mat-accordion>
+                @for(item of questions; track item) {
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{item.question}}
+                                </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>{{item.answer}}</p>
+                    </mat-expansion-panel>
+                }
+            </mat-accordion>
+        </div>
+    </section>
+}
