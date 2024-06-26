@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Section, Survey, SurveyCurrentState } from "../../models/survey";
+import { Section, Survey, SurveyCurrentState } from "../../../models/survey";
 import { ComponentStore } from "@ngrx/component-store";
 import { Observable, switchMap, tap} from "rxjs";
-import { SurveyService } from "../../survey.service";
+import { SurveyService } from "../../services/survey.service";
 import { Router } from "@angular/router";
 
 export interface SurveyComponentState {

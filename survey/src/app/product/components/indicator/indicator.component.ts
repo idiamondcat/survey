@@ -1,6 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Input, InputSignal, OnChanges, OnInit, SimpleChanges, WritableSignal, input, signal } from '@angular/core';
-import { SurveyStore } from '../question/question.component-store';
-import { Survey, SurveyCurrentState } from 'src/app/models/survey';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-indicator',

@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Field, Question, SurveyCurrentState } from '../../models/survey';
+import { Field, Question, SurveyCurrentState } from '../../../models/survey';
 import { AsyncPipe, NgClass } from '@angular/common';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons';
-import { SurveyStore } from './question.component-store';
 import { Observable } from 'rxjs';
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
-import { IndicatorComponent } from '../indicator/indicator.component';
+import { IndicatorComponent } from '../../components/indicator/indicator.component';
+import { SurveyStore } from './question.component-store';
 
 @Component({
   selector: 'app-question',

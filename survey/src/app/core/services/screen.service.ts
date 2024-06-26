@@ -2,7 +2,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { DestroyRef, Injectable, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BehaviorSubject } from 'rxjs';
-import { BreakPoints } from '../models/breakpoints';
+import { BreakPoints } from '../../models/breakpoints';
 
 @Injectable({
   providedIn: 'root'

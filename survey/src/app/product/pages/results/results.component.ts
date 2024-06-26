@@ -5,11 +5,11 @@ import { faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 import { faRotateLeft, faRotateRight, faTruckFast, faStar, faAngleLeft, faAngleRight, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
 import { AbstractControl, FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { SurveyService } from '../../survey.service';
-import { ResponseData } from '../../models/survey';
+import { SurveyService } from '../../services/survey.service';
+import { ResponseData } from '../../../models/survey';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ScreenService } from '../../services/screen.service';
-import { BreakPoints } from '../../models/breakpoints';
+import { ScreenService } from '../../../core/services/screen.service';
+import { BreakPoints } from '../../../models/breakpoints';
 
 @Component({
   selector: 'app-results',

@@ -1,8 +1,7 @@
-import { Injectable, WritableSignal, signal } from '@angular/core';
-import { Survey, ResponseData } from './models/survey';
-import * as mock from '../assets/mock/mock.json';
+import { Injectable } from '@angular/core';
+import { Survey, ResponseData } from '../../models/survey';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, catchError, from, map, switchMap, throwError } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
