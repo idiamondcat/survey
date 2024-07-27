@@ -1,0 +1,59 @@
+.change-modal {
+    position: relative;
+    background-color: #F1F3F9;
+    &__btn-wrapper {
+        display: flex;
+        justify-content: flex-end;
+    }
+    &__close-btn {
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        outline: none;
+    }
+    &__icon {
+        font-size: 1.375rem;
+    }
+    &__catalog, &__set {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        column-gap: 42.5px;
+        row-gap: 32px;
+    }
+    &__price-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 24px;
+        position: sticky;
+        bottom: -20px;
+        left: 0;
+        z-index: 2;
+        background-color: #ffffff;
+    }
+    &__price {
+        font: {
+            family: "Jost-Bold", Arial, sans-serif;
+            size: 2rem;
+        }
+        line-height: 2.875rem;
+        color: #464A50;
+    }
+}
+
+::ng-deep .mat-mdc-tab-header {
+    margin-bottom: 18px;
+}
+::ng-deep .mat-mdc-tab .mdc-tab__text-label,
+::ng-deep .mat-mdc-tab-link .mdc-tab__text-label {
+    font: {
+        family: "Jost-Bold", Arial, sans-serif;
+        size: 1.438rem;
+    }
+    line-height: 2.063rem;
+    color: #2F3146 !important;
+}
+::ng-deep .mat-mdc-tab-group .mdc-tab-indicator__content--underline {
+    border: 1px solid #6179FA !important;
+}

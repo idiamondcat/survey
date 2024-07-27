@@ -1,0 +1,65 @@
+@if (vm$ | async; as vm) {
+    @if (vm.isLoading) {
+        <div class="preloader">
+            <div class="preloader__wrapper">
+                <div class="preloader__img"></div>
+                <h1 class="preloader__title">
+                    {{vm.currentSection?.title}}
+                </h1>
+            </div>
+        </div>
+    } @else {
+        <div class="container">
+            <div class="question">
+                <app-indicator [progress]="progress" [questionCount]="questionCount"></app-indicator>
+                <div class="question__elem">
+                    @if (vm.currentQuestion) {
+                        <p class="question__text">{{vm.currentQuestion.question}}</p>
+                        <form [formGroup]="form">
+                            <fieldset class="question__wrapper">
+                                @switch (vm.currentQuestion.type) {
+                                    @case ("radio") {
+                                        @for (field of vm.currentQuestion.answers; track field) {
+                                            <label>
+                                                <input class="radio" type="radio" [name]="vm.currentQuestion.id" [formControlName]="vm.currentQuestion.id" [value]="field.answerId"
+                                                [placeholder]="field?.placeholder" (change)="onRadioChange(vm.currentQuestion.id, field.answerId)"
+                                                [checked]="field.answerId === form.get(vm.currentQuestion.id)?.value">
+                                                <div class="radio-indicator">
+                                                    <span>{{field?.text}}</span>
+                                                </div>
+                                            </label>
+                                        }
+                                    }
+                                    @case ("checkbox") {
+                                        @for (field of vm.currentQuestion.answers; track field; let idx = $index) {
+                                            <label [formArrayName]="vm.currentQuestion.id">
+                                                <input class="checkbox" type="checkbox" [formControlName]="idx" [value]="field.answerId" [placeholder]="field?.placeholder" (change)="onCheckboxChange(vm.currentQuestion.id, $event, field.answerId)">
+                                                <div class="checkbox-indicator">
+                                                    <fa-icon class="checkbox-indicator__icon" [icon]="faCircleCheck"></fa-icon>
+                                                    <span>{{field?.text}}</span>
+                                                </div>
+                                            </label>
+                                        }
+                                    }
+                                    @default {
+                                        @if (vm.currentQuestion.type === "textArea") {
+                                            <textarea [ngClass]="{'error': form.get(vm.currentQuestion.id)?.invalid && form.get(vm.currentQuestion.id)?.touched}" class="field" rows="4" [formControlName]="vm.currentQuestion.id" required></textarea>
+                                        } @else {
+                                            <input [ngClass]="{'error': form.get(vm.currentQuestion.id)?.invalid && form.get(vm.currentQuestion.id)?.touched}" class="field" [type]="vm.currentQuestion.type" [formControlName]="vm.currentQuestion.id" required>
+                                        }
+                                    }
+                                }
+                            </fieldset>
+                            <div class="question__btn-wrapper">
+                                <!-- @if (progress !== 0) { -->
+                                    <button class="btn btn--back" (click)="prevQuestion()">Назад</button>
+                                <!-- } -->
+                                <button class="btn btn--forward" [disabled]="!form.valid" (click)="nextQuestion()">Далее</button>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}

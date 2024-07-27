@@ -1,0 +1,40 @@
+.footer {
+    background-color: #ffffff;
+    padding: 61px 0 40px 0;
+
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__links-list {
+        display: flex;
+        align-items: center;
+        column-gap: 22px;
+    }
+    &__link {
+        width: 34px;
+        height: 34px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        border-radius: 50%;
+        text-decoration: none;
+        &--tg {
+            background-color: #24A1DE;
+        }
+        &--vk {
+            background-color: #4C75A3;
+        }
+        &--fb {
+            background-color: #4267B2;
+        }
+        &--inst {
+            background-color: #E1306C;
+        }
+    }
+    &__icon {
+        font-size: 1.188rem;
+    }
+}

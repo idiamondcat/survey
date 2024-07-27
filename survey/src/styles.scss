@@ -1,0 +1,178 @@
+/* You can add global styles to this file, and also import other style files */
+@use "./assets/styles/fonts" as fonts;
+
+html, body { height: 100%; }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    min-height: 100vh;
+    font: {
+        family: "Jost-Regular", Arial, sans-serif;
+        size: 16px;
+    }
+    line-height: 23px;
+    color: #464A50;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.container {
+    max-width: 924px;
+    padding: 0 12px;
+    margin: 0 auto;
+}
+
+.field {
+    padding: 25px 45px;
+    font: inherit;
+    font-size: 16px;
+    border: 2px solid #F1F3F9;
+    border-radius: 5px;
+    color: #BEC7D8;
+    transition: all .3s ease-in;
+    &:hover, &:active {
+        border-color: #DAFB59;
+        color: #464A50;
+    }
+    &:focus {
+        outline: none;
+        border-color: #DAFB59;
+        color: #464A50;
+    }
+    &.error {
+        border-color: #FA6857;
+    }
+}
+input[type="checkbox"], input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.checkbox-indicator {
+    display: flex;
+    align-items: center;
+    column-gap: 26px;
+    padding: 22px 33px;
+    font: inherit;
+    border: 2px solid #F1F3F9;
+    border-radius: 5px;
+    color: #BEC7D8;
+    &__icon {
+        font-size: 22px;
+    }
+}
+.radio-indicator {
+    display: flex;
+    align-items: center;
+    padding: 22px 33px;
+    font: inherit;
+    border: 2px solid #F1F3F9;
+    border-radius: 5px;
+    color: #BEC7D8;
+}
+label:hover input ~ .checkbox-indicator {
+    border-color: #DAFB59;
+    color: #464A50;
+
+    & .checkbox-indicator__icon {
+        color: #DAFB59 !important;
+    }
+}
+label input:checked ~ .checkbox-indicator {
+    border-color: #DAFB59;
+    color: #464A50;
+
+    & .checkbox-indicator__icon {
+        color: #DAFB59 !important;
+    }
+}
+label:hover input ~ .radio-indicator {
+    border-color: #DAFB59;
+    color: #464A50;
+}
+label input:checked ~ .radio-indicator {
+    border-color: #DAFB59;
+    color: #464A50;
+}
+label input.error ~ .radio-indicator {
+    border-color: #FA6857;
+}
+.btn {
+    padding: 16px 27px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 26px;
+    font: {
+        family: "Jost-Medium", Arial, sans-serif;
+        size: 1.358rem;
+    }
+    line-height: 31px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .3s ease-in;
+    &--forward, &--back {
+        width: 204px;
+    }
+    &--back {
+        background-color: transparent;
+        color: #BEC7D8;
+        &:hover {
+            background-color: #BEC7D8;
+            color: #FFFFFF;
+        }
+    }
+    &--forward, &--green {
+        background-color: #DAFB59;
+        color: #464A50;
+        &:hover {
+            opacity: .8;
+        }
+    }
+    &--violet {
+        background-color: #6179FA;
+        color: #ffffff;
+    }
+}
+.title {
+    font: {
+        family: "Jost-Bold", Arial, sans-serif;
+        size: 3.087rem;
+    }
+    line-height: 4.438rem;
+    color: #2F3146;
+}
+
+@media screen and (max-width: 599px) {
+    body {
+        font-size: 14px;
+    }
+    .title {
+        font-size: 1.5rem;
+        line-height: 2.25rem;
+    }
+    .btn {
+        font-size: 1.125rem;
+    }
+}
