@@ -13,52 +13,51 @@
             <div class="question">
                 <app-indicator [progress]="progress" [questionCount]="questionCount"></app-indicator>
                 <div class="question__elem">
-                    <p class="question__text">{{vm.currentQuestion?.text}}</p>
-                    <form [formGroup]="form">
-                        <fieldset class="question__wrapper">
-                            @switch (vm.currentQuestion?.questionType) {
-                                @case ("radio") {
-                                    @for (field of vm.currentQuestion?.fields; track field) {
-                                        <label>
-                                            <input [class]="field.class" type="radio" [name]="field.name" [formControlName]="field.name" [value]="field.variant" 
-                                            [placeholder]="field?.placeholder" (change)="onRadioChange(field.name, field.variant)" 
-                                            [checked]="field.variant === form.get(field.name)?.value">
-                                            <div class="radio-indicator">
-                                                <span>{{field?.variant}}</span>
-                                            </div>
-                                        </label>
+                    @if (vm.currentQuestion) {
+                        <p class="question__text">{{vm.currentQuestion.question}}</p>
+                        <form [formGroup]="form">
+                            <fieldset class="question__wrapper">
+                                @switch (vm.currentQuestion.type) {
+                                    @case ("radio") {
+                                        @for (field of vm.currentQuestion.answers; track field) {
+                                            <label>
+                                                <input class="radio" type="radio" [name]="vm.currentQuestion.id" [formControlName]="vm.currentQuestion.id" [value]="field.answerId"
+                                                [placeholder]="field?.placeholder" (change)="onRadioChange(vm.currentQuestion.id, field.answerId)"
+                                                [checked]="field.answerId === form.get(vm.currentQuestion.id)?.value">
+                                                <div class="radio-indicator">
+                                                    <span>{{field?.text}}</span>
+                                                </div>
+                                            </label>
+                                        }
                                     }
-                                }
-                                @case ("checkbox") {
-                                    @for (field of vm.currentQuestion?.fields; track field; let idx = $index) {
-                                        <label [formArrayName]="vm.currentQuestion?.questionName!">
-                                            <input [class]="field.class" type="checkbox" [formControlName]="idx" [value]="field.variant" [placeholder]="field?.placeholder" (change)="onCheckboxChange(vm.currentQuestion?.questionName!, $event, field.variant)" required>
-                                            <div class="checkbox-indicator">
-                                                <fa-icon class="checkbox-indicator__icon" [icon]="faCircleCheck"></fa-icon>
-                                                <span>{{field?.variant}}</span>
-                                            </div>
-                                        </label>
+                                    @case ("checkbox") {
+                                        @for (field of vm.currentQuestion.answers; track field; let idx = $index) {
+                                            <label [formArrayName]="vm.currentQuestion.id">
+                                                <input class="checkbox" type="checkbox" [formControlName]="idx" [value]="field.answerId" [placeholder]="field?.placeholder" (change)="onCheckboxChange(vm.currentQuestion.id, $event, field.answerId)">
+                                                <div class="checkbox-indicator">
+                                                    <fa-icon class="checkbox-indicator__icon" [icon]="faCircleCheck"></fa-icon>
+                                                    <span>{{field?.text}}</span>
+                                                </div>
+                                            </label>
+                                        }
                                     }
-                                }
-                                @default {
-                                    @for (field of vm.currentQuestion?.fields; track field) {
-                                        @if (field.type === "textarea") {
-                                            <textarea [ngClass]="{'error': form.get(field.name)?.invalid && form.get(field.name)?.touched}" [class]="field.class" rows="4" [formControlName]="field.name" [placeholder]="field?.placeholder" required></textarea>
+                                    @default {
+                                        @if (vm.currentQuestion.type === "textArea") {
+                                            <textarea [ngClass]="{'error': form.get(vm.currentQuestion.id)?.invalid && form.get(vm.currentQuestion.id)?.touched}" class="field" rows="4" [formControlName]="vm.currentQuestion.id" required></textarea>
                                         } @else {
-                                            <label>{{field?.variant}}</label>
-                                            <input [ngClass]="{'error': form.get(field.name)?.invalid && form.get(field.name)?.touched}" [class]="field.class" [type]="field.type" [formControlName]="field.name" [placeholder]="field?.placeholder" required>
+                                            <input [ngClass]="{'error': form.get(vm.currentQuestion.id)?.invalid && form.get(vm.currentQuestion.id)?.touched}" class="field" [type]="vm.currentQuestion.type" [formControlName]="vm.currentQuestion.id" required>
                                         }
                                     }
                                 }
-                            }
-                        </fieldset>
-                        <div class="question__btn-wrapper">
-                            @if (progress !== 0) {
-                                <button class="btn btn--back" (click)="prevQuestion()">Назад</button>
-                            }
-                            <button class="btn btn--forward" [disabled]="!form.valid" (click)="nextQuestion()">Далее</button>
-                        </div>
-                    </form>
+                            </fieldset>
+                            <div class="question__btn-wrapper">
+                                <!-- @if (progress !== 0) { -->
+                                    <button class="btn btn--back" (click)="prevQuestion()">Назад</button>
+                                <!-- } -->
+                                <button class="btn btn--forward" [disabled]="!form.valid" (click)="nextQuestion()">Далее</button>
+                            </div>
+                        </form>
+                    }
                 </div>
             </div>
         </div>

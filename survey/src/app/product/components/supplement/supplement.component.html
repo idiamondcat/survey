@@ -1,0 +1,14 @@
+<div class="supplement">
+    <div class="supplement__img-wrapper">
+        <img class="supplement__img" src="" alt="">
+    </div>
+    <h3 class="supplement__item-name">{{info.name}}</h3>
+    <span>{{info.count}} x 30 капсул</span>
+    <p class="supplement__item-description">{{info.description}}</p>
+    <button class="supplement__item-btn" (click)="openInfo()">подробнее</button>
+    @if (isCatalog) {
+        <button class="btn btn--green supplement__add-btn" (click)="addSupplement()">добавить</button>
+    } @else if (isSet) {
+        <button class="btn supplement__remove-btn">удалить</button>
+    }
+</div>

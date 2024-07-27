@@ -1,0 +1,46 @@
+<div class="product-modal">
+    <div class="product-modal__btn-wrapper">
+        <button class="product-modal__close-btn" mat-dialog-close>
+            <fa-icon class="product-modal__icon" [icon]="faXmark"></fa-icon>
+        </button>
+    </div>
+    <mat-dialog-content>
+        <div class="product-modal__wrapper">
+            <div class="product-modal__img">
+                <div class="product-modal__img-wrapper">
+                    <!-- <img src="" alt=""> -->
+                </div>
+                <button class="btn btn--green">Сертификат</button>
+            </div>
+            <div class="product-modal__info">
+                <h3 class="product-modal__name">{{data.name}}</h3>
+                <span class="product-modal__count">{{data.count}} x 30 капсул</span>
+                <p class="product-modal__description">{{data.description}}</p>
+            </div>
+        </div>
+        <table class="product-modal__ingredients">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th class="product-modal__title">Суточная норма</th>
+                    <th>Процент от РСП*, АУП** %</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of data.ingredients; track item) {
+                    <tr>
+                        <td>{{item.name}} {{item.count}}</td>
+                        <td>{{item.daily}}</td>
+                        <td>{{item.percent}}**</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <p class="product-modal__note">
+            * - рекомендуемая суточная потребность, Приложение 2 ТР ТР 022/2011<br>
+            ** - адекватный уровень потребления, Единые требования Таможенного союза ЕврАзЭС<br>
+            *** - не превышает верхний допустимый уровень потребления, Единые требования Таможенного союза ЕврАзЭС<br>
+            **** - адекватный уровень потребления не установлен
+        </p>
+    </mat-dialog-content>
+</div>

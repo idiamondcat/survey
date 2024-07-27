@@ -4,7 +4,7 @@ import { AsyncPipe, NgClass } from '@angular/common';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 import { Observable } from 'rxjs';
-import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IndicatorComponent } from '../../components/indicator/indicator.component';
 import { SurveyStore } from './question.component-store';
 
@@ -61,82 +61,80 @@ export class QuestionComponent implements OnInit {
     }
   }
 
-  private initializeCurrForm(currentQuestion: Question, answeredQuestions: { [key: string]: any }): void {
-    const fields: Field[] = currentQuestion.fields;
-    switch(currentQuestion.questionType) {
-      case('radio'): this.createRadio(fields, answeredQuestions);
+  private initializeCurrForm(currentQuestion: Question, answeredQuestions: Record<string, any>): void {
+    const fields: Field[] = currentQuestion.answers;
+    switch(currentQuestion.type) {
+      case('radio'): this.createRadio(currentQuestion.id, fields, answeredQuestions);
       break;
       case('checkbox'): this.createCheckbox(currentQuestion, answeredQuestions);
       break;
-      default: this.createTextField(fields, answeredQuestions);
+      default: this.createTextField(currentQuestion.id, currentQuestion.type, answeredQuestions);
       break;
     }
 
   }
 
-  public onRadioChange(name: string, value: any): void {
-    this.form.get(name)?.setValue(value);
+  public onRadioChange(id: string, answerId: string): void {
+    this.form.get(id)?.setValue(answerId);
     this.cd.detectChanges();
   }
 
-  public onCheckboxChange(name: string, event: any, value: any): void {
-  const formArray = this.form.get(name) as FormArray;
+  public onCheckboxChange(id: string, event: any, answerId: string): void {
+  const formArray = this.form.get(String(id)) as FormArray;
   const isChecked: boolean = event.target.checked;
+  let filteredControls: FormControl[];
   if (isChecked) {
-    formArray.push(new FormControl(value));
+    if (!formArray.controls.some(elem => elem.value === answerId)) formArray.push(new FormControl(answerId));
   } else {
-    const index: number = formArray.controls.findIndex(x => x.value === value);
-    formArray.removeAt(index);
+    const index: number = formArray.controls.findIndex(x => x.value === answerId);
+    if (index !== -1) formArray.removeAt(index);
   }
-  formArray.controls = formArray.controls.filter(control => typeof control.value === 'string');
-  console.log(formArray);
+  filteredControls = formArray.controls
+  .filter(control => typeof control.value === 'string')
+  .map(control => control as FormControl);
+
+  while (formArray.length !== 0) {
+    formArray.removeAt(0);
+  }
+
+  filteredControls.forEach(control => formArray.push(control));
   this.cd.detectChanges();
   }
 
-  private createTextField(fields: Field[], answeredQuestions: { [key: string]: any }) {
+  private createTextField(currId: string, type: string, answeredQuestions: Record<string, any>) {
     const formControls: { [key: string]: FormControl } = {};
-    fields.forEach((field: Field) => {
-      let initialValue = answeredQuestions[field.name] || '';
-      let validators = [];
-      if (field.type === 'text' || field.type === 'textarea') {
-        validators.push(Validators.required);
-      }
-      if (field.type === 'email') {
-        validators.push(Validators.required, Validators.email);
-      }
-      if (field.type === 'phone') {
-        validators.push(Validators.required, Validators.pattern(/^((8|\+374|\+994|\+995|\+375|\+7)[\- ]?)?\(?\d{3,5}\)?[\- ]?\d{1}[\- ]?\d{1}[\- ]?\d{1}[\- ]?\d{1}[\- ]?\d{1}(([\- ]?\d{1})?[\- ]?\d{1})?$/));
-      }
-      formControls[field.name] = new FormControl(initialValue, validators);
-    })
+    let initialValue = answeredQuestions[currId] || '';
+    let validators = [Validators.required];
+    formControls[currId] = new FormControl(initialValue, validators);
     this.form = this.fb.group(formControls);
     return this.form;
   }
 
-  private createRadio(fields: Field[], answeredQuestions: { [key: string]: any }) {
+  private createRadio(currId: string, fields: Field[], answeredQuestions: Record<string, any>) {
     const formControls: { [key: string]: FormControl } = {};
-    fields.forEach((field: Field, idx: number) => {
-      let initialValue = answeredQuestions[field.name] || '';
+    fields.forEach((field: Field) => {
+      let initialValue = answeredQuestions[currId] || '';
       if (!initialValue) {
-        initialValue = field.variant;
+        initialValue = field.answerId;
       }
-      if (!formControls[field.name]) {
-        formControls[field.name] = new FormControl(initialValue, Validators.required);
+      if (!formControls[currId]) {
+        formControls[currId] = new FormControl(initialValue, Validators.required);
       }
     })
     this.form = this.fb.group(formControls);
     return this.form;
   }
 
-  private createCheckbox(currentQuestion: Question, answeredQuestions: { [key: string]: any }) {
-    const { questionName, fields } = currentQuestion;
+  private createCheckbox(currentQuestion: Question, answeredQuestions: Record<string, any>) {
+    const { id, answers } = currentQuestion;
+    const newId: string = String(id);
     const formArray = this.fb.array([]);
-    fields.forEach((field: Field) => {
-      let initialValue = answeredQuestions[questionName!]?.includes(field.variant) || false;
+    answers.forEach((field: Field) => {
+      let initialValue: string | boolean = answeredQuestions[newId]?.includes(field.answerId) ? field.answerId : false;
       formArray.push(new FormControl(initialValue));
     });
     const formControls: { [key: string]: FormArray | FormControl } = {};
-    formControls[questionName!] = formArray;
+    formControls[newId] = formArray;
     this.form = this.fb.group(formControls);
     return this.form;
   }

@@ -1,294 +1,377 @@
-{
-    "sections": [
-        {
-            "title": "Контактная информация",
-            "questions": [
-                {
-                    "text": "Напишите нам немного информации о себе",
-                    "questionType": "text",
-                    "fields": [
-                        {
-                            "type": "text",
-                            "name": "name",
-                            "class": "field",
-                            "placeholder": "Имя"
-                        },
-                        {
-                            "type": "email",
-                            "name": "email",
-                            "class": "field",
-                            "placeholder": "Email"
-                        },
-                        {
-                            "type": "phone",
-                            "name": "phone",
-                            "class": "field",
-                            "placeholder": "Телефон"
-                        }
-                    ]
-                }
-            ]
+[
+  {
+    "id": "1",
+    "question": "Как вы оцениваете своё общее состояние здоровья?",
+    "type": "radio",
+    "sectionName": "Общее здоровье",
+    "answers": [
+      {
+        "answerId": "1_1",
+        "nextCard": "4",
+        "weight": 0,
+        "text": "Отличное"
+      },
+      {
+        "answerId": "1_2",
+        "nextCard": "4",
+        "weight": 0,
+        "text": "Хорошее"
+      },
+      {
+        "answerId": "1_3",
+        "nextCard": "4",
+        "weight": 0,
+        "text": "Удовлетворительное"
+      },
+      {
+        "answerId": "1_4",
+        "nextCard": "2",
+        "weight": {
+          "bad condition": 50
         },
-        {
-            "title": "Общее здоровье",
-            "questions": [
-                {
-                    "text": "Как вы оцениваете своё общее состояние здоровья?",
-                    "questionType": "radio",
-                    "fields": [
-                        {
-                            "type": "radio",
-                            "name": "overall_health",
-                            "variant": "Отличное"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "overall_health",
-                            "variant": "Хорошее"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "overall_health",
-                            "variant": "Удовлетворительное"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "overall_health",
-                            "variant": "Плохое"
-                        }
-                    ]
-                },
-                {
-                    "text": "Сколько часов в день вы спите?",
-                    "questionType": "text",
-                    "fields": [
-                        {
-                            "type": "text",
-                            "name": "sleep_hours",
-                            "class": "field",
-                            "placeholder": "Введите количество часов"
-                        }
-                    ]
-                },
-                {
-                    "text": "Как часто вы занимаетесь физическими упражнениями?",
-                    "questionType": "radio",
-                    "fields": [
-                        {
-                            "type": "radio",
-                            "name": "exercise_frequency",
-                            "variant": "Ежедневно"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "exercise_frequency",
-                            "variant": "Несколько раз в неделю"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "exercise_frequency",
-                            "variant": "Раз в неделю"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "exercise_frequency",
-                            "variant": "Реже"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "exercise_frequency",
-                            "variant": "Никогда"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "title": "Питание",
-            "questions": [
-                {
-                    "text": "Сколько раз в день вы обычно принимаете пищу?",
-                    "questionType": "text",
-                    "fields": [
-                        {
-                            "type": "text",
-                            "name": "meals_per_day",
-                            "class": "field",
-                            "placeholder": "Введите количество раз"
-                        }
-                    ]
-                },
-                {
-                    "text": "Следите ли вы за потреблением калорий?",
-                    "questionType": "radio",
-                    "fields": [
-                        {
-                            "type": "radio",
-                            "name": "calorie_intake",
-                            "variant": "Да"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "calorie_intake",
-                            "variant": "Нет"
-                        }
-                    ]
-                },
-                {
-                    "text": "Употребляете ли вы пищевые добавки?",
-                    "questionType": "radio",
-                    "fields": [
-                        {
-                            "type": "radio",
-                            "name": "supplements",
-                            "variant": "Да"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "supplements",
-                            "variant": "Нет"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "title": "Ментальное здоровье",
-            "questions": [
-                {
-                    "text": "Как часто вы испытываете стресс?",
-                    "questionType": "radio",
-                    "fields": [
-                        {
-                            "type": "radio",
-                            "name": "stress_frequency",
-                            "variant": "Ежедневно"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "stress_frequency",
-                            "variant": "Несколько раз в неделю"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "stress_frequency",
-                            "variant": "Раз в неделю"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "stress_frequency",
-                            "variant": "Реже"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "stress_frequency",
-                            "variant": "Никогда"
-                        }
-                    ]
-                },
-                {
-                    "text": "Пользуетесь ли вы методами релаксации (например, медитация, йога)?",
-                    "questionType": "radio",
-                    "fields": [
-                        {
-                            "type": "radio",
-                            "name": "relaxation_methods",
-                            "variant": "Да"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "relaxation_methods",
-                            "variant": "Нет"
-                        }
-                    ]
-                },
-                {
-                    "text": "Были ли у вас когда-либо диагностированы психические расстройства?",
-                    "questionType": "text",
-                    "fields": [
-                        {
-                            "type": "textarea",
-                            "name": "mental_health_diagnosis",
-                            "class": "field",
-                            "placeholder": "Если да, пожалуйста, уточните"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "title": "Привычки",
-            "questions": [
-                {
-                    "text": "Курите ли вы?",
-                    "questionType": "radio",
-                    "fields": [
-                        {
-                            "type": "radio",
-                            "name": "smoking",
-                            "variant": "Да"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "smoking",
-                            "variant": "Нет"
-                        }
-                    ]
-                },
-                {
-                    "text": "Употребляете ли вы алкоголь?",
-                    "questionType": "radio",
-                    "fields": [
-                        {
-                            "type": "radio",
-                            "name": "alcohol",
-                            "variant": "Да"
-                        },
-                        {
-                            "type": "radio",
-                            "name": "alcohol",
-                            "variant": "Нет"
-                        }
-                    ]
-                },
-                {
-                    "text": "Какие виды физической активности вам нравятся? (выберите все подходящие варианты)",
-                    "questionType": "checkbox",
-                    "questionName": "physical_activities",
-                    "fields": [
-                        {
-                            "type": "checkbox",
-                            "name": "running",
-                            "class": "checkbox",
-                            "variant": "Бег"
-                        },
-                        {
-                            "type": "checkbox",
-                            "name": "swimming",
-                            "class": "checkbox",
-                            "variant": "Плавание"
-                        },
-                        {
-                            "type": "checkbox",
-                            "name": "cycling",
-                            "class": "checkbox",
-                            "variant": "Велоспорт"
-                        },
-                        {
-                            "type": "checkbox",
-                            "name": "yoga",
-                            "class": "checkbox",
-                            "variant": "Йога"
-                        },
-                        {
-                            "type": "checkbox",
-                            "name": "training",
-                            "class": "checkbox",
-                            "variant": "Силовые тренировки"
-                        }
-                    ]
-                }
-            ]
-        }
+        "text": "Плохое"
+      }
     ]
-}
+  },
+  {
+    "id": "2",
+    "question": "Вы часто болеете?",
+    "type": "radio",
+    "sectionName": "Общее здоровье",
+    "answers": [
+      {
+        "answerId": "2_1",
+        "nextCard": "3",
+        "weight": {
+          "bad condition": 10
+        },
+        "text": "Да"
+      },
+      {
+        "answerId": "2_2",
+        "nextCard": "3",
+        "weight": 0,
+        "text": "Нет"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "question": "Как часто вы посещаете врача?",
+    "type": "radio",
+    "sectionName": "Общее здоровье",
+    "answers": [
+      {
+        "answerId": "3_1",
+        "nextCard": "4",
+        "weight": {
+          "bad condition": 5
+        },
+        "text": "Часто"
+      },
+      {
+        "answerId": "3_2",
+        "nextCard": "4",
+        "weight": {
+          "bad condition": 7
+        },
+        "text": "Редко"
+      },
+      {
+        "answerId": "3_3",
+        "nextCard": "4",
+        "weight": {
+          "bad condition": 10
+        },
+        "text": "Никогда"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "question": "Сколько часов в день вы спите?",
+    "type": "text",
+    "sectionName": "Общее здоровье",
+    "answers": [
+      {
+        "answerId": "4_1",
+        "nextCard": "5",
+        "weight": 0,
+        "placeholder": "Введите количество часов"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "question": "Как часто вы занимаетесь физическими упражнениями?",
+    "type": "radio",
+    "sectionName": "Общее здоровье",
+    "answers": [
+      {
+        "answerId": "5_1",
+        "nextCard": "6",
+        "weight": 0,
+        "text": "Ежедневно"
+      },
+      {
+        "answerId": "5_2",
+        "nextCard": "6",
+        "weight": 0,
+        "text": "Несколько раз в неделю"
+      },
+      {
+        "answerId": "5_3",
+        "nextCard": "6",
+        "weight": 0,
+        "text": "Раз в неделю"
+      },
+      {
+        "answerId": "5_4",
+        "nextCard": "6",
+        "weight": 0,
+        "text": "Реже"
+      },
+      {
+        "answerId": "5_5",
+        "nextCard": "6",
+        "weight": {
+          "bad condition": 10,
+          "heart_disease": 20
+        },
+        "text": "Никогда"
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "question": "Сколько раз в день вы обычно принимаете пищу?",
+    "type": "text",
+    "sectionName": "Питание",
+    "answers": [
+      {
+        "answerId": "6_1",
+        "nextCard": "7",
+        "weight": 0,
+        "placeholder": "Введите количество раз"
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "question": "Следите ли вы за потреблением калорий?",
+    "type": "radio",
+    "sectionName": "Питание",
+    "answers": [
+      {
+        "answerId": "7_1",
+        "nextCard": "8",
+        "weight": 0,
+        "text": "Да"
+      },
+      {
+        "answerId": "7_2",
+        "nextCard": "8",
+        "weight": 0,
+        "text": "Нет"
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "question": "Употребляете ли вы пищевые добавки?",
+    "type": "radio",
+    "sectionName": "Питание",
+    "answers": [
+      {
+        "answerId": "8_1",
+        "nextCard": "9",
+        "weight": 0,
+        "text": "Да"
+      },
+      {
+        "answerId": "8_2",
+        "nextCard": "10",
+        "weight": 0,
+        "text": "Нет"
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "question": "Какие именно добавки вы принимаете?",
+    "type": "text",
+    "sectionName": "Питание",
+    "answers": [
+      {
+        "answerId": "9_1",
+        "nextCard": "10",
+        "weight": 0,
+        "placeholder": "Введите названия добавок..."
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "question": "Как часто вы испытываете стресс?",
+    "type": "radio",
+    "sectionName": "Ментальное здоровье",
+    "answers": [
+      {
+        "answerId": "10_1",
+        "nextCard": "11",
+        "weight": 0,
+        "text": "Ежедневно"
+      },
+      {
+        "answerId": "10_2",
+        "nextCard": "11",
+        "weight": 0,
+        "text": "Несколько раз в неделю"
+      },
+      {
+        "answerId": "10_3",
+        "nextCard": "11",
+        "weight": 0,
+        "text": "Раз в неделю"
+      },
+      {
+        "answerId": "10_4",
+        "nextCard": "11",
+        "weight": 0,
+        "text": "Реже"
+      },
+      {
+        "answerId": "10_5",
+        "nextCard": "11",
+        "weight": 0,
+        "text": "Никогда"
+      }
+    ]
+  },
+  {
+    "id": "11",
+    "question": "Пользуетесь ли вы методами релаксации (например, медитация, йога)?",
+    "type": "radio",
+    "sectionName": "Ментальное здоровье",
+    "answers": [
+      {
+        "answerId": "11_1",
+        "nextCard": "12",
+        "weight": 0,
+        "text": "Да"
+      },
+      {
+        "answerId": "11_2",
+        "nextCard": "13",
+        "weight": 0,
+        "text": "Нет"
+      }
+    ]
+  },
+  {
+    "id": "12",
+    "question": "Какие именно методы релаксации вы используете?",
+    "type": "text",
+    "sectionName": "Ментальное здоровье",
+    "answers": [
+      {
+        "answerId": "12_1",
+        "nextCard": "13",
+        "weight": 0,
+        "placeholder": "Введите методы релаксации"
+      }
+    ]
+  },
+  {
+    "id": "13",
+    "question": "Были ли у вас когда-либо диагностированы психические расстройства?",
+    "type": "text",
+    "sectionName": "Ментальное здоровье",
+    "answers": [
+      {
+        "answerId": "13_1",
+        "nextCard": "14",
+        "weight": 0,
+        "placeholder": "Если да, пожалуйста, уточните"
+      }
+    ]
+  },
+  {
+    "id": "14",
+    "question": "Курите ли вы?",
+    "type": "radio",
+    "sectionName": "Привычки",
+    "answers": [
+      {
+        "answerId": "14_1",
+        "nextCard": "15",
+        "weight": 0,
+        "text": "Да"
+      },
+      {
+        "answerId": "14_2",
+        "nextCard": "15",
+        "weight": 0,
+        "text": "Нет"
+      }
+    ]
+  },
+  {
+    "id": "15",
+    "question": "Употребляете ли вы алкоголь?",
+    "type": "radio",
+    "sectionName": "Привычки",
+    "answers": [
+      {
+        "answerId": "15_1",
+        "nextCard": "16",
+        "weight": 0,
+        "text": "Да"
+      },
+      {
+        "answerId": "15_2",
+        "nextCard": "16",
+        "weight": 0,
+        "text": "Нет"
+      }
+    ]
+  },
+  {
+    "id": "16",
+    "question": "Какие виды физической активности вам нравятся? (выберите все подходящие варианты)",
+    "type": "checkbox",
+    "sectionName": "Привычки",
+    "answers": [
+      {
+        "answerId": "16_1",
+        "nextCard": "0",
+        "weight": 0,
+        "text": "Бег"
+      },
+      {
+        "answerId": "16_2",
+        "nextCard": "0",
+        "weight": 0,
+        "text": "Плавание"
+      },
+      {
+        "answerId": "16_3",
+        "nextCard": "0",
+        "weight": 0,
+        "text": "Велоспорт"
+      },
+      {
+        "answerId": "16_4",
+        "nextCard": "0",
+        "weight": 0,
+        "text": "Йога"
+      },
+      {
+        "answerId": "16_5",
+        "nextCard": "0",
+        "weight": 0,
+        "text": "Силовые тренировки"
+      }
+    ]
+  }
+]

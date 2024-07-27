@@ -1,0 +1,12 @@
+<div class="container">
+    <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="sendForm()">
+        <div class="contact-form__field-wrapper">
+            <input [ngClass]="{'error': getName?.invalid && getName?.touched}" class="field" type="text" formControlName="name" placeholder="Введите Ваше имя" required>
+            <input [ngClass]="{'error': getEmail?.invalid && getEmail?.touched}" class="field" type="email" formControlName="email" placeholder="Введите email" required>
+            <input [ngClass]="{'error': getPhone?.invalid && getPhone?.touched}" class="field" type="text" formControlName="phone" placeholder="Введите номер телефона" required>
+        </div>
+        <div class="contact-form__btn-wrapper">
+            <button type="submit" class="btn btn--green" [disabled]="!contactForm.valid">Перейти к опросу</button>
+        </div>
+    </form>
+</div>

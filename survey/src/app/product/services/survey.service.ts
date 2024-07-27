@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Survey, ResponseData } from '../../models/survey';
+import { Injectable, signal, WritableSignal } from '@angular/core';
+import { Survey, ResponseData, Supplement, Question, Section } from '../../models/survey';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, catchError, map, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -10,26 +10,75 @@ import { Router } from '@angular/router';
 export class SurveyService {
   surveyDataUrl: string = 'assets/mock/mock.json';
   responseDataUrl: string = 'assets/mock/results.json';
-  constructor(private http: HttpClient, private router: Router,) { }
+  catalogUrl: string = 'assets/mock/catalog.json';
+  public isContact: WritableSignal<boolean> = signal<boolean>(false);
+  public surveyData: BehaviorSubject<Survey | null>  = new BehaviorSubject<Survey | null>(null);
+  public survey$: Observable<any> = this.surveyData.asObservable();
 
-  getData(): Observable<Survey> {
-    return this.http.get<Survey>(this.surveyDataUrl).pipe(
+  constructor(private http: HttpClient, private router: Router) { }
+
+  public postContact(form: {[key: string]: string | null}): Observable<Survey> {
+    const url: string = 'https://get-survey-cards-r7bmzfhfgq-ew.a.run.app/survey_cards';
+    return this.http.post<any>(url, form).pipe(
+      tap(res => {
+        let newSurvey: Survey;
+        let groupedQuestions: Section[] = res.reduce((acc: Section[], elem: Question) => {
+            let section = acc.find(section => section.title === elem.sectionName);
+            if (!section) {
+                section = { title: elem.sectionName, questions: [] };
+                acc.push(section);
+            }
+            section.questions.push(elem);
+            return acc;
+        }, []);
+        newSurvey = { sections: groupedQuestions };
+        this.isContact.set(true);
+        this.surveyData.next(newSurvey);
+      }),
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    )
+  }
+
+  // getData(): Observable<Survey> {
+  //   // const url = 'https://big-survey-9979357-r7bmzfhfgq-ew.a.run.app/survey_cards';
+  //   return this.http.get<any>(this.surveyDataUrl).pipe(
+  //     map(res => {
+  //       let newSurvey: Survey;
+  //       let groupedQuestions: Section[] = res.reduce((acc: Section[], elem: Question) => {
+  //           let section = acc.find(section => section.title === elem.sectionName);
+  //           if (!section) {
+  //               section = { title: elem.sectionName, questions: [] };
+  //               acc.push(section);
+  //           }
+  //           section.questions.push(elem);
+  //           return acc;
+  //       }, []);
+  //       newSurvey = { sections: groupedQuestions };
+  //       return newSurvey;
+  //     }),
+  //     catchError((error) => {
+  //       return throwError(() => error);
+  //     })
+  //   );
+  // }
+
+  postData(weights: {weights: Record<string, number>}): Observable<any> {
+    const url = 'https://get-survey-result-products-r7bmzfhfgq-ew.a.run.app/recommend-products/';
+    return this.http.post<any>(url, weights).pipe(
+      map((res) => {
+        return res;
+      }),
       catchError((error) => {
         return throwError(() => error);
       })
     );
   }
 
-  postData(): Observable<ResponseData> {
-    const headers: HttpHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-      'Access-Control-Allow-Headers': 'X-Requested-With,content-type'
-    });
-    return this.http.get<ResponseData>(this.responseDataUrl, { headers }).pipe(
-      map((res: ResponseData): ResponseData => {
-        return res;
-      }),
+  getCatalog(): Observable<Supplement[]> {
+    return this.http.get<Supplement[]>(this.catalogUrl).pipe(
+      map(res => res),
       catchError((error) => {
         return throwError(() => error);
       })

@@ -1,0 +1,29 @@
+<div class="change-modal">
+    <div class="change-modal__btn-wrapper">
+        <button class="change-modal__close-btn" mat-dialog-close>
+            <fa-icon class="change-modal__icon" [icon]="faXmark"></fa-icon>
+        </button>
+    </div>
+    <mat-dialog-content>
+        <mat-tab-group>
+            <mat-tab label="Ваш набор">
+                <div class="change-modal__set">
+                    @for (item of data; track item) {
+                        <app-supplement [info]="item" [isSet]="true"></app-supplement>
+                    }
+                </div>
+            </mat-tab>
+            <mat-tab label="Каталог">
+                <div class="change-modal__catalog">
+                    @for (item of catalog; track item) {
+                        <app-supplement [info]="item" [isCatalog]="true"></app-supplement>
+                    }
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-dialog-content>
+    <div class="change-modal__price-wrapper">
+        <span class="change-modal__price">{{400 | currency: 'RUB':'symbol':'1.0-0'}}</span>
+        <button class="btn btn--green">Сохранить</button>
+    </div>
+</div>

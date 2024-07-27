@@ -8,6 +8,9 @@ import { AppComponent } from './app/app.component';
 import localeRu from '@angular/common/locales/ru';
 import { LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
+import { provideStore } from '@ngrx/store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { reducers } from './app/redux/app.reducers';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -19,6 +22,9 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes),
     provideHttpClient(),
     { provide: LOCALE_ID, useValue: 'ru' },
-    { provide: DEFAULT_CURRENCY_CODE, useValue: 'RUB' }, provideAnimationsAsync(),
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'RUB' },
+    provideAnimationsAsync(),
+    provideStore(reducers, {}),
+    provideStoreDevtools({ maxAge: 25, logOnly: false, autoPause: true })
   ]
 });

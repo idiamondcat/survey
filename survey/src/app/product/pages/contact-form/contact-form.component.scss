@@ -1,0 +1,17 @@
+.contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 115px;
+    display: flex;
+    flex-direction: column;
+    &__field-wrapper {
+        display: flex;
+        flex-direction: column;
+        row-gap: 14px;
+        margin-bottom: 38px;
+    }
+    &__btn-wrapper {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

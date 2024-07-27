@@ -67,16 +67,16 @@
                 <div class="recommendations__slider">
                     <div class="recommendations__slider-container" #moveSlider>
                         @for (item of results.supplements; track item) {
-                            <!-- тут можно вынести в отдельный компонент -->
-                            <div class="recommendations__slider-item">
+                            <!-- <div class="recommendations__slider-item">
                                 <div class="recommendations__img-wrapper">
                                     <img class="recommendations__img" src="" alt="">
                                 </div>
                                 <h3 class="recommendations__item-name">{{item.name}}</h3>
                                 <span>{{item.count}} x 30 капсул</span>
                                 <p class="recommendations__item-description">{{item.description}}</p>
-                                <button class="recommendations__item-btn">подробнее</button>
-                            </div>
+                                <button class="recommendations__item-btn" (click)="openInfo(item)">подробнее</button>
+                            </div> -->
+                            <app-supplement class="recommendations__slider-item" [info]="item" [isCatalog]="false"></app-supplement>
                         }
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                             <fa-icon class="recommendations__btn-icon" [icon]="faAngleRight"></fa-icon>
                         </button>
                     </div>
-                    <button class="btn btn--violet">Изменить набор</button>
+                    <button class="btn btn--violet" (click)="openAllProducts(results.supplements)">Изменить набор</button>
                 </div>
             </div>
         </div>
@@ -246,4 +246,6 @@
             </mat-accordion>
         </div>
     </section>
+} @else {
+    <h1>ТУТ ПОКА ВЕДУТСЯ РАБОТЫ</h1>
 }

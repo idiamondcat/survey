@@ -45,102 +45,142 @@
     ],
     "supplements": [
         {
+            "id": 1,
             "name": "В12",
             "description": "Поддерживает работу нервной системы, помогает в производстве энергии, предотвращает анемию.",
             "count": "500 мкг",
             "img": "",
+            "price": "900",
             "ingredients": [
                 {
                     "name": "sfd0",
-                    "count": "dsfdgd"
+                    "count": "120 мг",
+                    "daily": "500 мг",
+                    "percent": "16"
                 },
                 {
                     "name": "sfd0",
-                    "count": "dsfdgd"
+                    "count": "120 мг",
+                    "daily": "500 мг",
+                    "percent": "16"
                 },
                 {
                     "name": "sfd0",
-                    "count": "dsfdgd"
+                    "count": "120 мг",
+                    "daily": "500 мг",
+                    "percent": "16"
                 }
             ]
         },
         {
+            "id": 2,
             "name": "Омега 3",
             "description": "Поддерживают здоровье сердца, снижают воспаление, улучшают функцию мозга и могут помочь при депрессии.",
             "count": "1000 мг",
             "img": "",
+            "price": "600",
             "ingredients": [
                 {
                     "name": "sfd0",
-                    "count": "dsfdgd"
+                    "count": "120 мг",
+                    "daily": "500 мг",
+                    "percent": "16"
                 },
                 {
                     "name": "sfd0",
-                    "count": "dsfdgd"
+                    "count": "120 мг",
+                    "daily": "500 мг",
+                    "percent": "16"
                 },
                 {
                     "name": "sfd0",
-                    "count": "dsfdgd"
+                    "count": "120 мг",
+                    "daily": "500 мг",
+                    "percent": "16"
                 }
             ]
         },
         {
+            "id": 3,
             "name": "Магний",
             "description": "Поддерживает нервную и мышечную функции, участвует в синтезе белков, регуляции сахара в крови и артериального давления.",
             "count": "200 мг",
             "img": "",
+            "price": "800",
             "ingredients": [
                 {
                     "name": "sfd0",
-                    "count": "dsfdgd"
+                    "count": "120 мг",
+                    "daily": "500 мг",
+                    "percent": "16"
                 },
                 {
                     "name": "sfd0",
-                    "count": "dsfdgd"
+                    "count": "120 мг",
+                    "daily": "500 мг",
+                    "percent": "16"
                 },
                 {
                     "name": "sfd0",
-                    "count": "dsfdgd"
+                    "count": "120 мг",
+                    "daily": "500 мг",
+                    "percent": "16"
                 }
             ]
         },
         {
+            "id": 4,
             "name": "Калий",
             "description": "Регулирует водный баланс, поддерживает нормальную работу нервной и мышечной систем, помогает поддерживать кровяное давление.",
             "count": "99 мг",
             "img": "",
+            "price": "900",
             "ingredients": [
                 {
                     "name": "sfd0",
-                    "count": "dsfdgd"
+                    "count": "120 мг",
+                    "daily": "500 мг",
+                    "percent": "16"
                 },
                 {
                     "name": "sfd0",
-                    "count": "dsfdgd"
+                    "count": "120 мг",
+                    "daily": "500 мг",
+                    "percent": "16"
                 },
                 {
                     "name": "sfd0",
-                    "count": "dsfdgd"
+                    "count": "120 мг",
+                    "daily": "500 мг",
+                    "percent": "16"
                 }
             ]
         },
         {
+            "id": 5,
             "name": "Железо",
             "description": "Способствует транспортировке кислорода в крови, поддерживает иммунную функцию, предотвращает анемию.",
             "count": "20 мг",
             "img": "",
+            "price": "1000",
             "ingredients": [
                 {
                     "name": "sfd0",
-                    "count": "dsfdgd"
+                    "count": "120 мг",
+                    "daily": "500 мг",
+                    "percent": "16"
                 },
                 {
                     "name": "sfd0",
-                    "count": "dsfdgd"
+                    "count": "120 мг",
+                    "daily": "500 мг",
+                    "percent": "16"
                 },
                 {
                     "name": "sfd0",
-                    "count": "dsfdgd"
+                    "count": "120 мг",
+                    "daily": "500 мг",
+                    "percent": "16"
                 }
             ]
         }
